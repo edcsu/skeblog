@@ -1,10 +1,11 @@
 import Link from "next/link"
 import Logo from "./logo"
+import classes from "./mainnavigation.module.css"
 
 const MainNavigation = () => {
     return (
         <>
-            <header>
+            <header className={classes.header}>
                 <Link href="/"><Logo /></Link>
                 <nav>
                     <ul>
