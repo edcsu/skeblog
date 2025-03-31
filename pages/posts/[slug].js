@@ -1,8 +1,8 @@
+import PostContent from "../../components/posts/postdetail/postcontent"
+
 const PostDetailsPage = () => {
     return (
-        <>
-            <h1>Post Details Page</h1>
-        </>
+        <PostContent />
     )
 }
 
