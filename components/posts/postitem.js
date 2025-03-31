@@ -7,17 +7,18 @@ const PostItem = ({ post }) => {
         month : 'long',
         year : 'numeric'
     })
-    const imagePath = `/images/posts/${slug}/${post.image}`
+    const imagePath = `/images/posts/${post.slug}/${post.image}`
     return (
         <>
             <li className={classes.post}>
-                <Link>
+                <Link href={`/posts/${post.slug}`}>
                     <div className={classes.image}>
                         <Image 
                             src={imagePath}
                             alt={post.title}
                             width={300}
                             height={200}
+                            layout='responsive'
                         />
                     </div>
                     <div className={classes.content}>
