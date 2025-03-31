@@ -1,4 +1,4 @@
-const FeaturedPostsPage = () => {
+const FeaturedPosts = () => {
     return (
         <>
             <h1>Featured Posts Page</h1>
@@ -6,4 +6,4 @@ const FeaturedPostsPage = () => {
     )
 }
 
-export default FeaturedPostsPage
+export default FeaturedPosts
