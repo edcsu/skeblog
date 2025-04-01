@@ -2,6 +2,7 @@ const handler = (req, res) => {
     if (req.method === "POST") {
         const { email, name, message } = req.body
         let errors = []
+        console.log(email, name, message)
         if (!email || email.trim() === "" || !email.includes('@') ) {
             errors.push("Email is required")
         }
@@ -40,3 +41,5 @@ const handler = (req, res) => {
                     })
     }
 }
+
+export default handler
