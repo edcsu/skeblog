@@ -39,7 +39,7 @@ const ContactForm = () => {
                 name,
                 message
             };
-            await sentContactDetails(contactDetails);
+            await sendContactDetails(contactDetails);
             showNotification({
                 title : 'Success!',
                 message : 'Successfully sent message',
@@ -104,7 +104,7 @@ const ContactForm = () => {
 
 export default ContactForm
 
-async function sentContactDetails(contactDetails) {
+async function sendContactDetails(contactDetails) {
     const response = await fetch('/api/contact', {
         method: "POST",
         headers: {
@@ -116,6 +116,6 @@ async function sentContactDetails(contactDetails) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(resData.message || 'Something went wrong');
+        throw new Error(data.message || 'Something went wrong');
     }
 }
