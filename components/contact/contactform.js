@@ -45,6 +45,9 @@ const ContactForm = () => {
                 message : 'Successfully sent message',
                 status: 'success'
             })
+            setEmail('')
+            setName('')
+            setMessage('')
         } catch (error) {
             showNotification({
                 title : 'Error!',
