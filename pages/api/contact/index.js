@@ -4,7 +4,6 @@ const handler = async (req, res) => {
     if (req.method === "POST") {
         const { email, name, message } = req.body
         let errors = []
-        console.log(email, name, message)
         if (!email || email.trim() === "" || !email.includes('@') ) {
             errors.push("Email is required")
         }
@@ -32,10 +31,8 @@ const handler = async (req, res) => {
             name,
             message
         }
-        console.log(newMessage)
-        
-        let client
 
+        let client
         try {
             client = await connectDatabase()
         } catch (error) {
