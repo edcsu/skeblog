@@ -5,7 +5,6 @@ import { useContext } from "react";
 
 const Layout = (props) => {
     const { notification } = useContext(NotificationContext)
-    console.log (notification)
     return (
         <>
             <MainNavigation />
