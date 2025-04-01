@@ -8,8 +8,6 @@ export const connectDatabase = async () => {
             deprecationErrors: true,
         }
     });
-    await client.connect();
-
     return client
 }
 
