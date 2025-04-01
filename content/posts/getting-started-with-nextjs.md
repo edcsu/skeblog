@@ -6,6 +6,6 @@ excerpt : "Next JS is the best full stack React framework"
 isFeatured: true
 ---
 
-# this is a title
+# This is a title
 
 This is a [link](https://google.com)
