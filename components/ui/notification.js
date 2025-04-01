@@ -13,6 +13,10 @@ function Notification(props) {
     statusClasses = classes.error;
   }
 
+  if (status === 'pending') {
+    statusClasses = classes.pending;
+  }
+
   const cssClasses = `${classes.notification} ${statusClasses}`;
 
   return (

@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./contactform.module.css"
+import NotificationContext from "../../store/notificationcontext";
 
 const ContactForm = () => {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
     const [errorList, setErrorList] = useState([])
+    const { showNotification } = useContext(NotificationContext)
 
     const sendMessageHandler = async (event) => {
         event.preventDefault();
@@ -26,17 +28,30 @@ const ContactForm = () => {
             setErrorList(errors)
         }
 
-        const response = await fetch('/api/contact', {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify({
+        try {
+            showNotification({
+                title : 'Sending message...',
+                message : 'Sending message',
+                status: 'pending'
+            })
+            const contactDetails = {
                 email,
                 name,
                 message
+            };
+            await sentContactDetails(contactDetails);
+            showNotification({
+                title : 'Success!',
+                message : 'Successfully sent message',
+                status: 'success'
             })
-        });
+        } catch (error) {
+            showNotification({
+                title : 'Error!',
+                message : error.message || 'Something went wrong',
+                status: 'error'
+            })
+        }
     }
     return (
         <section className={classes.contact}>
@@ -85,3 +100,19 @@ const ContactForm = () => {
 }
 
 export default ContactForm
+
+async function sentContactDetails(contactDetails) {
+    const response = await fetch('/api/contact', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(contactDetails)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(resData.message || 'Something went wrong');
+    }
+}

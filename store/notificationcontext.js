@@ -10,7 +10,7 @@ import { createContext, useState } from "react";
     const [activeNotification, setActiveNotification] = useState()
  
      const showNotificationHandler = (notificationData) => {
-         setActiveNotification({notificationData})
+         setActiveNotification(notificationData)
      }
  
      const hideNotificationHandler = () => {
